@@ -20,6 +20,8 @@ class DepartementResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    protected static ?string $recordTitleAttribute = 'name';
+
     public static function form(Schema $schema): Schema
     {
         return DepartementForm::configure($schema);
@@ -44,5 +46,9 @@ class DepartementResource extends Resource
             'create' => CreateDepartement::route('/create'),
             'edit' => EditDepartement::route('/{record}/edit'),
         ];
+    }
+     public static function getGloballySearchableAttributes(): array
+    {
+        return ['name'];
     }
 }
